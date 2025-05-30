@@ -657,7 +657,7 @@
             src="BIld79.jpg"
             alt="Artikel 79"
             loading="lazy"
-            data-category="kategorie2"
+            data-category="ksold"
       />
       <img
             src="BIld80.jpg"
@@ -1494,5 +1494,28 @@
   <footer>
     &copy; 2025 Haushaltsauflösung Südvorstadt Dresden– Wir freuen uns auf Ihren Besuch!
   </footer>
+  <script>
+  // Sold label + gray-out effect
+  document.addEventListener("DOMContentLoaded", () => {
+    const galleryImages = document.querySelectorAll(".gallery img");
+
+    galleryImages.forEach((img) => {
+      if (img.getAttribute("data-category") === "sold") {
+        img.classList.add("sold");
+
+        const soldWrapper = document.createElement("div");
+        soldWrapper.classList.add("gallery-item");
+
+        const soldLabel = document.createElement("div");
+        soldLabel.classList.add("sold-label");
+        soldLabel.textContent = "VERKAUFT";
+
+        img.parentNode.insertBefore(soldWrapper, img);
+        soldWrapper.appendChild(img);
+        soldWrapper.appendChild(soldLabel);
+      }
+    });
+  });
+</script>
 </body>
 </html>
